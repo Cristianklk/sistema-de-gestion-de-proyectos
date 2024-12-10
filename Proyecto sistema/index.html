@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="welcome-screen-container"></div>
+
+        <div class="login-container">
+            <div class="language-selector">
+                <label for="language">Language:</label>
+                <select id="language">
+                    <option value="en" selected>English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+
+            <h2 data-lang-key="welcome">Welcome</h2>
+            <p data-lang-key="choose-method">Select the authentication method</p>
+            <form id="login-form"> 
+                <p>
+                    <label for="username" data-lang-key="username">Username</label>
+                    <input class="input" type="text" name="username" id="username">
+                </p>
+                <p>
+                    <label for="password" data-lang-key="password">Password</label>
+                    <input class="input" type="password" name="password" id="password">
+                </p>
+                <div class="options">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="rememberme" id="rememberme">
+                            <span data-lang-key="remember-me">Remember me</span>
+                        </label>
+                    </div>
+                    <a href="#" data-lang-key="forgot-password">I forgot my password</a>
+                </div>
+                <p>
+                    <input type="submit" class="btn btn-login" data-lang-key="log-in" value="Log in">
+                </p>
+                <p>
+                    <button type="button" class="btn btn-register" id="register-btn" data-lang-key="register">
+                        Register
+                    </button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p data-lang-key="loading">Loading...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="hero">
+        <nav>
+            <h2 class="logo"><span>Centro de </span> Proyectos</h2>
+            <ul>
+                <li><a href="#">Tareas</a></li>
+                <li><a href="#">Pendientes</a></li>
+                <li><a href="#">Estadistica</a></li>
+                <li><a href="#">Calendario</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <button id="logoutButton" type="button">Logout</button>
+        </nav>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="content">
+        <h1>Dashboard</h1>
+        <div id="chart-container" style="width: 100%; height: 500px;"></div>
+    </div>
+
+    <script>
+        // Funcionalidad del boton Logout 
+        const logoutButton = document.getElementById('logoutButton');
+    
+        logoutButton.addEventListener('click', function() {
+          // terminacion de la sesion
+          sessionStorage.clear();  // Borrar el almacenamiento de sesión
+    
+          // Redireccionar la pagina de index
+        window.location.href="index.html";
+        });
+
+        // Cargar y dibujar el gráfico
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            const data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 8],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 3],
+                ['Sleep', 8]
+            ]);
+
+            const options = {
+                title: 'My Daily Activities',
+            };
+
+            const chart = new google.visualization.PieChart(document.getElementById('chart-container'));
+            chart.draw(data, options);
+        }
+    </script>
+</body>
+</html>
